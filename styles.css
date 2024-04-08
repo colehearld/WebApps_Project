@@ -39,10 +39,10 @@ h2 {
   cursor: pointer;
 }
 .login-button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50; 
 }
 .signup-button {
-  background-color: #008CBA; /* Blue */
+  background-color: #008CBA; 
   margin-top: 5px;
 }
 .captcha {
