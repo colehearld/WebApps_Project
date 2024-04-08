@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #006600;
+          position: fixed; /* Fix the navbar to the top */
+          width: 100%; /* Full width */
+          top: 0; /* Stick it to the top */
+        }
+
+        li {
+          display: inline-block;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #003300;
+        }
+
+        .login-container {
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-top: 50px; /* Add padding to avoid overlap with the fixed navbar */
+        }
+
+        /* Add your login form styles here */
+
+    </style>
+
+</head>
+
+<body>
+    <ul>
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="discovery.html">Discovery</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+
+    <div class="login-container">
+        <!-- Login form -->
+        <div>
+          <h2>Login or Sign Up</h2>
+          <div class="form-input">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-input">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+          </div>
+          <button class="login-button" type="submit">Log in</button>
+          <button class="signup-button" type="button">Sign Up</button>
+        </div>
+        <!-- End of login form -->
+    </div>
+
+</body>
+</html>
+
