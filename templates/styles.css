@@ -1,18 +1,11 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+.login-container {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  padding-top: 50px; 
 }
-.login-container {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+
 h2 {
   text-align: center;
   color: green;
@@ -42,10 +35,35 @@ h2 {
 }
 .signup-button {
   background-color: #008CBA; 
-  margin-top: 5px;
 }
 .captcha {
   text-align: center;
   margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #006600;
+  position: fixed;
+  width: 100%; 
+  top: 0; 
+}
+
+li {
+  display: inline-block;
+}
+
+li a {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #003300;
 }
 

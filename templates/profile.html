@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Catches</title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  .catch-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .catch-title {
+    font-size: 20px;
+    color: #333;
+  }
+  .catch-attribute {
+    margin-bottom: 10px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+  <ul>
+    <li><a class="active" href="index.html">Home</a></li>
+    <li><a href="discovery.html">Discovery</a></li>
+    <li><a href="profile.html">Profile</a></li>
+    <li><a href="addcatch.html">Add catch</a></li>
+  </ul>
+
+<h2>My Catches</h2>
+
+<div class="grid-container">
+  <!-- Catch 1 -->
+  <div class="catch-card">
+    <div class="catch-title">Salmon</div>
+    <div class="catch-attribute">Weight: 5 lbs</div>
+    <div class="catch-attribute">Length: 22 in</div>
+    <div class="catch-attribute">Lure: Spinner</div>
+    <div class="catch-attribute">Location: River Bend</div>
+  </div>
+
+  <!-- Catch 2 -->
+  <div class="catch-card">
+    <div class="catch-title">Bass</div>
+    <div class="catch-attribute">Weight: 3 lbs</div>
+    <div class="catch-attribute">Length: 18 in</div>
+    <div class="catch-attribute">Lure: Worm</div>
+    <div class="catch-attribute">Location: Lake View</div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+

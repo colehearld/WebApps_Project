@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <!-- Sign Up form -->
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post">
+          <div class="form-input">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-input">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-input">
+              <label for="confirm_password">Confirm Password</label>
+              <input type="password" id="confirm_password" name="confirm_password" required>
+          </div>
+          <button class="signup-button" type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
+

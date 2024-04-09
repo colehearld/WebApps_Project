@@ -19,9 +19,9 @@
           padding: 0;
           overflow: hidden;
           background-color: #006600;
-          position: fixed; /* Fix the navbar to the top */
-          width: 100%; /* Full width */
-          top: 0; /* Stick it to the top */
+          position: fixed; 
+          width: 100%; 
+          top: 0; 
         }
 
         li {
@@ -39,14 +39,6 @@
           background-color: #003300;
         }
 
-        .login-container {
-          flex-grow: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding-top: 50px; /* Add padding to avoid overlap with the fixed navbar */
-        }
-
     </style>
 
 </head>
@@ -56,6 +48,7 @@
       <li><a class="active" href="index.html">Home</a></li>
       <li><a href="discovery.html">Discovery</a></li>
       <li><a href="profile.html">Profile</a></li>
+      <li><a href="addcatch.html">Add catch</a></li>
     </ul>
 
     <div class="login-container">
@@ -70,11 +63,13 @@
               <label for="password">Password</label>
               <input type="password" id="password" name="password" required>
           </div>
-          <button class="login-button" type="submit">Log in</button>
-          <button class="signup-button" type="button">Sign Up</button>
+          <a href="profile.html" class="login-button">Log In</a>
+          <a href="signup.html" class="signup-button">Sign Up</a>
+          
         </div>
     </div>
-
 </body>
 </html>
+
+
 
