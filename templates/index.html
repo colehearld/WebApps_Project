@@ -1,75 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-        }
-
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          background-color: #006600;
-          position: fixed; 
-          width: 100%; 
-          top: 0; 
-        }
-
-        li {
-          display: inline-block;
-        }
-
-        li a {
-          display: block;
-          color: white;
-          padding: 14px 16px;
-          text-decoration: none;
-        }
-
-        li a:hover {
-          background-color: #003300;
-        }
-
-    </style>
-
-</head>
-
-<body>
-    <ul>
-      <li><a class="active" href="index.html">Home</a></li>
-      <li><a href="discovery.html">Discovery</a></li>
-      <li><a href="profile.html">Profile</a></li>
-      <li><a href="addcatch.html">Add catch</a></li>
-    </ul>
-
-    <div class="login-container">
-        <!-- Login form -->
-        <div>
-          <h2>Login or Sign Up</h2>
-          <div class="form-input">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username" required>
-          </div>
-          <div class="form-input">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required>
-          </div>
-          <a href="profile.html" class="login-button">Log In</a>
-          <a href="signup.html" class="signup-button">Sign Up</a>
-          
-        </div>
+{% extends "base.html" %} {% block title %}Login / Signup{% endblock %} {% block content
+  %}
+  <div class="login-container">
+    <!-- Login form -->
+    <div>
+      <h2>Login or Sign Up</h2>
+      <div class="form-input">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-input">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+      </div>
+      <a href="profile" class="login-button">Log In</a>
+      <a href="signup" class="signup-button">Sign Up</a>
+      
     </div>
-</body>
-</html>
-
-
+  </div>
+  {% endblock %}
 

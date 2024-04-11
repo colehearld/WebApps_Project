@@ -1,119 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Record Your Catch</title>
-<link rel="stylesheet" href="styles.css">
+{% extends "base.html" %} {% block title %}Add Catch{% endblock %} {% block content
+  %}
+  <div id="catch-form">
+    <h2>reel in your catch</h2>
+  <label for="fish-type">Fish type:</label>
+  <input type="text" id="fish-type" name="fish_type">
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-  }
+  <label for="weight">Weight (lbs):</label>
+  <input type="number" id="weight" name="weight" min="0" step="0.01">
 
-  h2 {
-    color: #333;
-    text-align: center;
-  }
+  <label for="length">Length (in):</label>
+  <input type="number" id="length" name="length" min="0" step="0.01">
 
-  #catch-form {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 400px;
-    margin: 20px auto;
-  }
+  <label for="lure">Lure used:</label>
+  <input type="text" id="lure" name="lure">
 
-  #catch-form label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
+  <label for="map">Location:</label>
+  <div id="map">(Map)</div>
 
-  #catch-form input[type=text],
-  #catch-form input[type=number] {
-    width: 400px;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+  <button type="button" onclick="addCatch()">Add Catch</button>
+</div>
 
-  #map {
-    width: 100%;
-    height: 200px;
-    background-color: #e2e2e2;
-    border: none;
-    color: white;
-    text-align: center;
-    line-height: 200px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    background-image: url('map-placeholder.png'); 
-    background-size: cover;
-    background-position: center;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-
-  button:hover {
-    background-color: #4cae4c;
-  }
-
-</style>
-</head>
-<body>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="discovery.html">Discovery</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a class="active" href="addcatch.html">Add catch</a></li>
-      </ul>
-
-      <div id="catch-form">
-        <h2>reel in your catch</h2>
-      <label for="fish-type">Fish type:</label>
-      <input type="text" id="fish-type" name="fish_type">
-    
-      <label for="weight">Weight (lbs):</label>
-      <input type="number" id="weight" name="weight" min="0" step="0.01">
-    
-      <label for="length">Length (in):</label>
-      <input type="number" id="length" name="length" min="0" step="0.01">
-    
-      <label for="lure">Lure used:</label>
-      <input type="text" id="lure" name="lure">
-    
-      <label for="map">Location:</label>
-      <div id="map">(Map)</div>
-    
-      <button type="button" onclick="addCatch()">Add Catch</button>
-    </div>
-    
 
 <script>
-  // Placeholder
-  function addCatch() {
-    alert('Catch Added!');
-  }
+// Placeholder
+function addCatch() {
+alert('Catch Added!');
+}
 </script>
-
-</body>
-</html>
-
-
+  {% endblock %}
