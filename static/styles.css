@@ -44,6 +44,11 @@ h2 {
   text-align: center;
   color: green;
 }
+
+a {
+  text-decoration: none;
+}
+
 .form-input {
   margin-bottom: 10px;
   width: 100%;
