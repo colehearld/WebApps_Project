@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
 class Catch(db.Model):
     __tablename__ = 'catches'
     
-    catch_id = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()))
+    catch_id = db.Column(db.String(36), primary_key=True, unique=True, default=lambda: str(uuid.uuid4()))
     fish_type = db.Column(db.String(20))
     weight = db.Column(db.Float)
     length = db.Column(db.Float)
@@ -139,6 +139,7 @@ def addcatch():
             return render_template('addcatch.html')
         else:        
             new_catch = Catch(fish_type=fish_type, weight=weight, length=length, lure=lure, location=location, user_username=username)
+            print(new_catch)
             db.session.add(new_catch)
             db.session.commit()
             print('catch added!')
