@@ -2,23 +2,15 @@
   %}
   <h2>My Catches</h2>
   <div class="grid-container">
-    <!-- Catch 1 -->
+    {% for catch in catches %}
     <div class="catch-card">
-      <div class="catch-title">Salmon</div>
-      <div class="catch-attribute">Weight: 5 lbs</div>
-      <div class="catch-attribute">Length: 22 in</div>
-      <div class="catch-attribute">Lure: Spinner</div>
-      <div class="catch-attribute">Location: River Bend</div>
+        <div class="catch-title">{{ catch.fish_type }}</div>
+        <div class="catch-attribute">Weight: {{ catch.weight }}</div>
+        <div class="catch-attribute">Length: {{ catch.length }}</div>
+        <div class="catch-attribute">Lure: {{ catch.lure }}</div>
+        <div class="catch-attribute">Location: {{ catch.location }}</div>
     </div>
-
-    <!-- Catch 2 -->
-    <div class="catch-card">
-      <div class="catch-title">Bass</div>
-      <div class="catch-attribute">Weight: 3 lbs</div>
-      <div class="catch-attribute">Length: 18 in</div>
-      <div class="catch-attribute">Lure: Worm</div>
-      <div class="catch-attribute">Location: Lake View</div>
-    </div>
+    {% endfor %}
 
   </div>
   {% endblock %}

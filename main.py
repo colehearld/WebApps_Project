@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, current_user, UserMixin
 from functools import wraps
-import os
+import os, uuid
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -34,11 +34,11 @@ class User(db.Model, UserMixin):
 class Catch(db.Model):
     __tablename__ = 'catches'
     
-    catch_id = db.Column(db.Integer, primary_key=True)
+    catch_id = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()))
     fish_type = db.Column(db.String(20))
-    weight = db.Column(db.Double)
-    length = db.Column(db.Double)
-    lure_used = db.Column(db.String(20))
+    weight = db.Column(db.Float)
+    length = db.Column(db.Float)
+    lure = db.Column(db.String(20))
     location = db.Column(db.String(20))
     
     user_username = db.Column(db.String(20), db.ForeignKey('users.username'))
@@ -94,6 +94,9 @@ def signup():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         
+        if username == None or password1 == None or password2 == None:
+            return render_template('signup.html')
+        
         user = User.query.filter_by(username=username).first()
         if user:
             print('username is taken')
@@ -105,18 +108,43 @@ def signup():
             db.session.commit()
             print('user created!')
             session['username'] = username
-            return render_template('profile.html')
+            return redirect(url_for('profile'))
         
     return render_template('signup.html')
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET'])
 @login_required
 def profile():
-    return render_template('profile.html')
+    username = session['username']
+    
+    catches = Catch.query.join(User).filter(User.username == username).all()
+    
+    return render_template('profile.html', catches=catches)
 
-@app.route('/addcatch')
+@app.route('/addcatch', methods=['GET', 'POST'])
 @login_required
 def addcatch():
+    username = session['username']
+    
+    if request.method == 'POST':
+        fish_type = request.form.get('fish_type')
+        weight = request.form.get('weight')
+        length = request.form.get('length')
+        lure = request.form.get('lure')
+        location = request.form.get('location')
+        
+        if (fish_type == None or weight == None or length == None or
+            lure == None or location == None):
+            print('empty fields in catch form')
+            return render_template('addcatch.html')
+        else:        
+            new_catch = Catch(fish_type=fish_type, weight=weight, length=length, lure=lure, location=location, user_username=username)
+            db.session.add(new_catch)
+            db.session.commit()
+            print('catch added!')
+            print(new_catch)
+            return render_template('addcatch.html')
+    
     return render_template('addcatch.html')
 
 @app.route('/discovery')
@@ -125,7 +153,8 @@ def discovery():
     return render_template('discovery.html')
 
 if __name__ == "__main__":
-    # only run when initially setting up tables for the db
+    #only run when initially setting up tables for the db
     # with app.app_context():
+    #     db.drop_all()
     #     db.create_all()
     app.run(debug=True) 
