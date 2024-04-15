@@ -169,50 +169,6 @@ button {
   color: #555;
 }
 
-.discovery-table-div {
-  margin: auto;
-  width: 50%;
-  padding: 50px;
-}
-
-.discovery-table-div h2 {
-  width: 25%;
-}
-
-.discovery-table  {
-  border-collapse:collapse;
-  border-spacing:0;
-}
-
-.discovery-table td {
-  border-color:black;
-  border-style:solid;
-  border-width:1px;
-  font-family:Arial, sans-serif;
-  font-size:14px;
-  overflow:hidden;
-  padding:10px 5px;
-  word-break:normal;
-}
-
-.discovery-table th {
-  border-color:black;
-  border-style:solid;
-  border-width:1px;
-  font-family:Arial, sans-serif;
-  font-size:14px;
-  font-weight:bold;
-  overflow:hidden;
-  padding:10px 5px;
-  word-break:normal;
-}
-
-.discovery-table .discovery-table-header {
-  border-color:inherit;
-  text-align:left;
-  vertical-align:top
-}
-
 .tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
 .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
   font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}

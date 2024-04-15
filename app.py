@@ -73,6 +73,22 @@ def discovery():
     top_5_catches = Catch.query.order_by(desc(Catch.weight)).limit(5).all()
     return render_template('discovery.html', top_catches=top_5_catches)
 
+@app.route('/delete-catch', methods=['POST'])
+def delete_catch():
+    catch_id = request.form.get('catchId')  # Retrieve catch ID from form data
+    if catch_id is None:
+        return print('error: Catch ID is required, 400')
+
+    # Find the catch object with the given ID and delete it
+    delete_catch = Catch.query.filter_by(catch_id=catch_id).first()
+    
+    if delete_catch:
+        db.session.delete(delete_catch)
+        db.session.commit()
+        return str(delete_catch) + ' deleted'
+    else:
+        return 'error: Catch not found', 404
+
 if __name__ == "__main__":
     # only run when initially setting up tables for the db
     # with app.app_context():

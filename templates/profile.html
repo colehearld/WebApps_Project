@@ -5,7 +5,7 @@
   <div class="profile-container">
     <div class="grid-container">
       {% for catch in catches %}
-      <div class="catch-card">
+      <div class="catch-card" data-catch-id="{{ catch.catch_id }}">
           <div class="catch-title">{{ catch.fish_type }}</div>
           <div class="catch-attribute">Weight: {{ catch.weight }}</div>
           <div class="catch-attribute">Length: {{ catch.length }}</div>
