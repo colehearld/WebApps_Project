@@ -8,21 +8,17 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        
-        if username == None or password == None:
-            return redirect(url_for('login'))
                 
         user = User.query.filter_by(username=username).first()
         
         if user:
             if user.password == password:
                 session['username'] = username
-                print('successful login')
-                print(session['username'])
+                print('successful login user: ' + session['username'])
                 return redirect(url_for('profile'))
             else:
                 print('incorrect password')
-                return redirect(url_for('login'))          
+                return redirect(url_for('auth.login'))          
     
     return render_template('login.html')
 
@@ -38,9 +34,6 @@ def signup():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         
-        if username == None or password1 == None or password2 == None:
-            return render_template('signup.html')
-        
         user = User.query.filter_by(username=username).first()
         if user:
             print('username is taken')
@@ -50,7 +43,7 @@ def signup():
             new_user = User(username=username, password=password1)
             db.session.add(new_user)
             db.session.commit()
-            print('user created!')
+            print('user: ' + username + ' created!')
             session['username'] = username
             return redirect(url_for('profile'))
         

@@ -27,6 +27,8 @@ class Catch(db.Model):
     length = db.Column(db.Float)
     lure = db.Column(db.String(20))
     location = db.Column(db.String(20))
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     
     user_username = db.Column(db.String(20), db.ForeignKey('users.username'))
     

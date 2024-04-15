@@ -4,6 +4,7 @@ from auth import auth_bp
 from config import Config
 from flask import Flask, render_template, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 from flask_login import login_required, current_user, UserMixin
 from functools import wraps
 
@@ -26,7 +27,7 @@ def login_required(f):
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():        
-    return render_template('home.html')
+    return redirect(url_for('profile'))
 
 @app.route('/profile', methods=['GET'])
 @login_required
@@ -48,13 +49,15 @@ def addcatch():
         length = request.form.get('length')
         lure = request.form.get('lure')
         location = request.form.get('location')
+        latitude = request.form.get('latitude')
+        longitude = request.form.get('longitude')
         
         if (fish_type == None or weight == None or length == None or
             lure == None or location == None):
             print('empty fields in catch form')
             return render_template('addcatch.html')
         else:        
-            new_catch = Catch(fish_type=fish_type, weight=weight, length=length, lure=lure, location=location, user_username=username)
+            new_catch = Catch(fish_type=fish_type, weight=weight, length=length, lure=lure, location=location, latitude=latitude, longitude=longitude, user_username=username)
             print(new_catch)
             db.session.add(new_catch)
             db.session.commit()
@@ -66,11 +69,12 @@ def addcatch():
 
 @app.route('/discovery')
 @login_required
-def discovery():
-    return render_template('discovery.html')
+def discovery():    
+    top_5_catches = Catch.query.order_by(desc(Catch.weight)).limit(5).all()
+    return render_template('discovery.html', top_catches=top_5_catches)
 
 if __name__ == "__main__":
-    #only run when initially setting up tables for the db
+    # only run when initially setting up tables for the db
     # with app.app_context():
     #     db.drop_all()
     #     db.create_all()
