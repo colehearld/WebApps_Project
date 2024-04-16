@@ -1,15 +1,12 @@
-import os, base64
+import os
 from models import *
 from auth import auth_bp
 from config import Config
-from werkzeug.utils import secure_filename
 from flask import Flask, render_template, redirect, url_for, request, session, current_app
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
 from flask_login import login_required
 from functools import wraps
-
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 # create a Flask instance
 app = Flask(__name__)
@@ -57,10 +54,8 @@ def addcatch():
         
         upload_directory = os.path.join('static', 'images')
 
-        # Create the directory if it doesn't exist
         os.makedirs(upload_directory, exist_ok=True)
 
-        # Save the image to the upload directory
         image_path = os.path.join(upload_directory, image_file.filename)
         image_file.save(image_path)
             
@@ -90,11 +85,10 @@ def discovery():
 
 @app.route('/delete-catch', methods=['POST'])
 def delete_catch():
-    catch_id = request.form.get('catchId')  # Retrieve catch ID from form data
+    catch_id = request.form.get('catchId')
     if catch_id is None:
         return print('error: Catch ID is required, 400')
 
-    # Find the catch object with the given ID and delete it
     delete_catch = Catch.query.filter_by(catch_id=catch_id).first()
     
     if delete_catch:
