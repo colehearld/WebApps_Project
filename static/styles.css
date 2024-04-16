@@ -152,6 +152,10 @@ button {
   padding-top: 30px;
 }
 
+.img-container img{
+  max-width: 100%;
+}
+
 .catch-card {
   background-color: #fff;
   border-radius: 8px;
@@ -179,7 +183,6 @@ button {
   border-spacing: 0;
 }
 
-/* Header cell style */
 .tg-header {
   background-color: #4CAF50;
   color: white;
@@ -188,7 +191,6 @@ button {
   text-align: center;
 }
 
-/* Column cell style */
 .tg-column {
   background-color: #f2f2f2;
   color: #333;
@@ -197,18 +199,15 @@ button {
   text-align: center;
 }
 
-/* Data cell style */
 .tg-data {
   padding: 8px;
   text-align: center;
 }
 
-/* Alternate row background color */
 .tg tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Hover effect */
 .tg tbody tr:hover {
   background-color: #ddd;
 }
