@@ -1,33 +1,33 @@
-{% extends "base.html" %} {% block title %}Discovery{% endblock %} {% block content
-  %}
-  <div class="discovery-table-div">
-    <table class="tg">
-      <thead>
-        <tr>
-          <th class="tg-0foe" colspan="6">Top 5 Catches</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tg-ilu6">Fish Type</td>
-          <td class="tg-ilu6">Weight</td>
-          <td class="tg-ilu6">Length</td>
-          <td class="tg-ilu6">Lure</td>
-          <td class="tg-ilu6">Location</td>
-          <td class="tg-ilu6">User</td>
-        </tr>
-        {% for catch in top_catches %}
-        <tr>
-          <td class="tg-f7v4">{{ catch.fish_type }}</td>
-          <td class="tg-f7v4">{{ catch.weight }}</td>
-          <td class="tg-j1id">{{ catch.length }}</td>
-          <td class="tg-j1id">{{ catch.lure }}</td>
-          <td class="tg-j1id">{{ catch.location }}</td>
-          <td class="tg-j1id">{{ catch.user_username }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  
-  {% endblock %}
+{% extends "base.html" %}
+{% block title %}Discovery{% endblock %}
+{% block content %}
+<div class="discovery-table-div">
+  <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-header" colspan="6">Top 5 Catches</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-column">Fish Type</td>
+        <td class="tg-column">Weight</td>
+        <td class="tg-column">Length</td>
+        <td class="tg-column">Lure</td>
+        <td class="tg-column">Location</td>
+        <td class="tg-column">User</td>
+      </tr>
+      {% for catch in top_catches %}
+      <tr>
+        <td class="tg-data">{{ catch.fish_type }}</td>
+        <td class="tg-data">{{ catch.weight }}</td>
+        <td class="tg-data">{{ catch.length }}</td>
+        <td class="tg-data">{{ catch.lure }}</td>
+        <td class="tg-data">{{ catch.location }}</td>
+        <td class="tg-data">{{ catch.user_username }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

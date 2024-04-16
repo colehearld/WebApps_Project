@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Add Catch{% endblock %} {% block content
   %}
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   <div id="catch-form">
     <h2>reel in your catch</h2>
     <label for="fish-type">Fish type:</label>
@@ -19,7 +19,7 @@
     <input type="text" id="location" name="location" required>
 
     <label for="image">Choose an image:</label>
-    <input type="file" id="image" name="image" accept="image/*" required>
+    <input type="file" id="image" name="image" accept="image/*">
     <button class="button clear-btn" type="button" onclick="clearInput()">clear</button>
 
     <label for="map">Location:</label>

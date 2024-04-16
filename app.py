@@ -1,11 +1,12 @@
-import os
+import os, base64
 from models import *
 from auth import auth_bp
 from config import Config
-from flask import Flask, render_template, redirect, url_for, request, session
+from werkzeug.utils import secure_filename
+from flask import Flask, render_template, redirect, url_for, request, session, current_app
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
-from flask_login import login_required, current_user, UserMixin
+from flask_login import login_required
 from functools import wraps
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -36,7 +37,7 @@ def profile():
     
     catches = Catch.query.join(User).filter(User.username == username).all()
     
-    return render_template('profile.html', catches=catches)
+    return render_template('profile.html', username=username, catches=catches)
 
 @app.route('/addcatch', methods=['GET', 'POST'])
 @login_required
@@ -52,18 +53,32 @@ def addcatch():
         latitude = request.form.get('latitude')
         longitude = request.form.get('longitude')
         
-        if (fish_type == None or weight == None or length == None or
-            lure == None or location == None):
-            print('empty fields in catch form')
-            return render_template('addcatch.html')
-        else:        
-            new_catch = Catch(fish_type=fish_type, weight=weight, length=length, lure=lure, location=location, latitude=latitude, longitude=longitude, user_username=username)
-            print(new_catch)
-            db.session.add(new_catch)
-            db.session.commit()
-            print('catch added!')
-            print(new_catch)
-            return render_template('addcatch.html')
+        image_file = request.files['image']
+        
+        upload_directory = os.path.join('static', 'images')
+
+        # Create the directory if it doesn't exist
+        os.makedirs(upload_directory, exist_ok=True)
+
+        # Save the image to the upload directory
+        image_path = os.path.join(upload_directory, image_file.filename)
+        image_file.save(image_path)
+            
+        new_catch = Catch(
+            fish_type=fish_type, 
+            weight=weight, 
+            length=length, 
+            lure=lure, 
+            location=location, 
+            latitude=latitude, 
+            longitude=longitude, 
+            image=image_path, 
+            user_username=username
+        )
+        db.session.add(new_catch)
+        db.session.commit()        
+        print('catch added!')
+        print(new_catch)
     
     return render_template('addcatch.html')
 
@@ -85,7 +100,8 @@ def delete_catch():
     if delete_catch:
         db.session.delete(delete_catch)
         db.session.commit()
-        return str(delete_catch) + ' deleted'
+        print(str(delete_catch) + ' deleted')
+        return render_template('profile.html')
     else:
         return 'error: Catch not found', 404
 

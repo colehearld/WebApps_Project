@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
 import uuid
 
@@ -29,6 +30,7 @@ class Catch(db.Model):
     location = db.Column(db.String(20))
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
+    image = db.Column(db.String(40))
     
     user_username = db.Column(db.String(20), db.ForeignKey('users.username'))
     
